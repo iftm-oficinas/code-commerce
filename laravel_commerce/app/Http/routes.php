@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('admin/categories', 'AdminCategoriesController@index');
+
+Route::get('admin/products', 'AdminProductsController@index');
+
+//$category = new \CodeCommerce\Category();
+//$category->name= "Computers";
+//$category->description = "All about computers";
+//$category->save();
+//$category::all();
