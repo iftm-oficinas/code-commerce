@@ -15,12 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/categories', 'AdminCategoriesController@index');
+Route::group(['prefix' => 'admin'], function() {
 
-Route::get('admin/products', 'AdminProductsController@index');
+    Route::group(['prefix'=>'categories'], function() {
+        Route::get('/', 'AdminCategoriesController@index');
+        Route::get('insert', ['as' => 'insert', 'uses' => 'AdminCategoriesController@insert']);
+        Route::get('update', ['as' => 'update', 'uses' => 'AdminCategoriesController@update']);
+        Route::get('delete', ['as' => 'delete', 'uses' => 'AdminCategoriesController@delete']);
+        Route::get('select', ['as' => 'select', 'uses' => 'AdminCategoriesController@select']);
+    });
 
-//$category = new \CodeCommerce\Category();
-//$category->name= "Computers";
-//$category->description = "All about computers";
-//$category->save();
-//$category::all();
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('/', 'AdminProductsController@index');
+        Route::get('insert', ['as' => 'insert', 'uses' => 'AdminProductsController@insert']);
+        Route::get('update', ['as' => 'update', 'uses' => 'AdminProductsController@update']);
+        Route::get('delete', ['as' => 'delete', 'uses' => 'AdminProductsController@delete']);
+        Route::get('select', ['as' => 'select', 'uses' => 'AdminProductsController@select']);
+    });
+});

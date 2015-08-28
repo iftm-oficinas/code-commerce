@@ -20,4 +20,24 @@ class AdminProductsController extends Controller
 
         return $products;
     }
+
+    public function insert()
+    {
+        return "INSERT";
+    }
+
+    public function update()
+    {
+        return "UPDATE";
+    }
+
+    public function delete()
+    {
+        return "DELETE";
+    }
+
+    public function select()
+    {
+        return "SELECT";
+    }
 }
