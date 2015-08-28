@@ -3,41 +3,55 @@
 namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Category;
+use CodeCommerce\Http\Requests;
+use CodeCommerce\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
 
 class AdminCategoriesController extends Controller
 {
-    private $categories;
+    private $categoryModel;
 
-    public function __construct(Category $category)
+    public function __construct(Category $categoryModel)
     {
-        $this->middleware('guest');
-        $this->categories = $category;
+        $this->categoryModel = $categoryModel;
     }
 
     public function index()
     {
-        $categories = $this->categories->all();
+        $categories = $this->categoryModel->all();
 
-        return $categories;
+        return view('categories.index', compact('categories'));
     }
 
-    public function insert()
+    public function create()
     {
-        return "INSERT";
+        return view('categories.create');
     }
 
-    public function update()
+    public function store(Requests\CategoryRequest $request)
     {
-        return "UPDATE";
+        $input = $request->all();
+        $category = $this->categoryModel->fill($input);
+        $category->save();
+        return redirect('admin/categories');
     }
 
-    public function delete()
-    {
-        return "DELETE";
+    public function update(Requests\CategoryRequest $request, $id){
+        $this->categoryModel->find($id)->update($request->all());
+        return redirect('admin/categories');
     }
 
-    public function select()
+    public function destroy($id)
     {
-        return "SELECT";
+        $this->categoryModel->find($id)->delete();
+        return redirect('admin/categories');
     }
+
+    public function edit($id)
+    {
+        $category = $this->categoryModel->find($id);
+        return view('categories.edit', compact('category'));
+    }
+
 }

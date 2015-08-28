@@ -3,41 +3,55 @@
 namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Product;
+use CodeCommerce\Http\Requests;
+use CodeCommerce\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
 
 class AdminProductsController extends Controller
 {
-    private $products;
+    private $productModel;
 
-    public function __construct(Product $product)
+    public function __construct(Product $productModel)
     {
-        $this->middleware('guest');
-        $this->products = $product;
+        $this->productModel = $productModel;
     }
 
     public function index()
     {
-        $products = $this->products->all();
+        $products = $this->productModel->all();
 
-        return $products;
+        return view('products.index', compact('products'));
     }
 
-    public function insert()
+    public function create()
     {
-        return "INSERT";
+        return view('products.create');
     }
 
-    public function update()
+    public function store(Requests\ProductRequest $request)
     {
-        return "UPDATE";
+        $input = $request->all();
+        $product = $this->productModel->fill($input);
+        $product->save();
+        return redirect('admin/products');
     }
 
-    public function delete()
-    {
-        return "DELETE";
+    public function update(Requests\ProductRequest $request, $id){
+        $this->productModel->find($id)->update($request->all());
+        return redirect('admin/products');
     }
 
-    public function select()
+    public function destroy($id)
     {
-        return "SELECT";
+        $this->productModel->find($id)->delete();
+        return redirect('admin/products');
     }
+
+    public function edit($id)
+    {
+        $product = $this->productModel->find($id);
+        return view('products.edit', compact('product'));
+    }
+
 }
