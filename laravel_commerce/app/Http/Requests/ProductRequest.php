@@ -23,12 +23,14 @@ class ProductRequest extends Request
      */
     public function rules()
     {
+        $this->merge(['featured' => $this->input('featured', 0)]);
+        $this->merge(['recommend' => $this->input('recommend', 0)]);
+
+
         return [
-            'name' => 'required|min:5',
+            'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'featured' => 'required|boolean',
-            'recommend' => 'required|boolean',
         ];
     }
 }
