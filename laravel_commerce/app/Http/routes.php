@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'StoreController@index');
 
 Route::get('auth/login', ['as' => 'login', 'uses' => function () {
     return view('auth\login');

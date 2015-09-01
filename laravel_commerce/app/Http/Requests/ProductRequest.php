@@ -26,11 +26,10 @@ class ProductRequest extends Request
         $this->merge(['featured' => $this->input('featured', 0)]);
         $this->merge(['recommend' => $this->input('recommend', 0)]);
 
-
         return [
             'name' => 'required',
             'description' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0.01',
         ];
     }
 }

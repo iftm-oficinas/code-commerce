@@ -36,12 +36,12 @@
 
         <div class="form-group">
             {!! Form::label('featured', 'Featured:') !!}
-            {!! Form::checkbox('featured', $product->featured, ['class'=>'form-control']) !!}
+            {!! Form::checkbox('featured', true, $product->featured) !!}
         </div>
 
         <div class="form-group">
             {!! Form::label('recommend', 'Recommend:') !!}
-            {!! Form::checkbox('recommend', $product->recommend, ['class'=>'form-control']) !!}
+            {!! Form::checkbox('recommend', true, $product->recommend) !!}
         </div>
 
         <div class="form-group">

@@ -35,4 +35,9 @@ class Product extends Model
         $tags = $this->tags->lists('name');
         return implode(',', $tags);
     }
+
+    public function scopeFeatured($query)
+    {
+        return $query->where('featured', '=', 1);
+    }
 }
