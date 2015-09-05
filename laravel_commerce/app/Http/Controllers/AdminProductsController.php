@@ -50,6 +50,10 @@ class AdminProductsController extends Controller
 
     public function destroy($id)
     {
+        foreach($this->productModel->find($id)->images as $image)
+        {
+            $this->destroyImage($image, $image->id);
+        }
         $this->productModel->find($id)->delete();
         return redirect('admin/products');
     }
