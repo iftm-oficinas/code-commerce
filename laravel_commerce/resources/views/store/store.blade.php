@@ -52,10 +52,10 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ route('register') }}"><i class="fa fa-user"></i> Minha conta</a></li>
-                            <li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
+                            <li><a href="{{ route('checkout.place') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
-                            <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="#"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -83,8 +83,8 @@
                                     <li><a href="#">Products</a></li>
                                     <li><a href="#">Product Details</a></li>
                                     <li><a href="#">Checkout</a></li>
-                                    <li><a href="{{ route('cart') }}">Cart</a></li>
-                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                    <li><a href="#">Cart</a></li>
+                                    <li><a href="#">Login</a></li>
                                 </ul>
                             </li>
 

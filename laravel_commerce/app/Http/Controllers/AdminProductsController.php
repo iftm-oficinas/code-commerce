@@ -18,6 +18,7 @@ class AdminProductsController extends Controller
 
     public function __construct(Product $productModel)
     {
+        //$this->middleware('auth');
         $this->productModel = $productModel;
     }
 
