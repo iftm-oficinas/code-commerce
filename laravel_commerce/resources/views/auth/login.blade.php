@@ -1,4 +1,4 @@
-@extends('app')
+@extends('store.store')
 
 @section('content')
 <div class="container-fluid">
@@ -47,9 +47,9 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
-
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
+								<button type="submit" class="btn btn-primary">Login</button><br><br>
+								<a class="btn btn-link" href="{{ url('/password/email') }}">Esqueceu sua senha?</a>
+								<a class="btn btn-link" href="{{ url('/auth/register') }}">Criar novo usuario</a>
 							</div>
 						</div>
 					</form>

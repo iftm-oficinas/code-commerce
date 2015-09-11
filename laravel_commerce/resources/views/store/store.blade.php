@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,8 @@
     <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
 
 
-</head><!--/head-->
+</head>
+<!--/head-->
 
 <body>
 <header id="header"><!--header-->
@@ -38,7 +38,8 @@
                 </div>
             </div>
         </div>
-    </div><!--/header_top-->
+    </div>
+    <!--/header_top-->
 
     <div class="header-middle"><!--header-middle-->
         <div class="container">
@@ -52,23 +53,35 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
-                            <li><a href="{{ route('checkout.place') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
-                            <li><a href="#"><i class="fa fa-lock"></i> Login</a></li>
+
+                            @if (Auth::guest())
+                                <li><a href="{{ url('/auth/login') }}"><i class="fa fa-lock"></i>Login</a></li>
+                                <li><a href="{{ url('/auth/register') }}"><i class="fa fa-unlock"></i>Register</a></li>
+                            @else
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{ route('account.orders') }}"><i class="fa fa-user"></i> Minha conta</a></li>
+                                        <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-lock"></i>Sair</a></li>
+                                    </ul>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div><!--/header-middle-->
+    </div>
+    <!--/header-middle-->
 
     <div class="header-bottom"><!--header-bottom-->
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -99,9 +112,10 @@
                 </div>
             </div>
         </div>
-    </div><!--/header-bottom-->
-</header><!--/header-->
-
+    </div>
+    <!--/header-bottom-->
+</header>
+<!--/header-->
 
 
 <section>
@@ -127,19 +141,19 @@
 <footer id="footer"><!--Footer-->
 
 
-
-
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
                 <p class="pull-left">Copyright © 2013 E-Shop Inc. All rights reserved.</p>
-                <p class="pull-right">Designed by <span><a target="_blank" href="http://invoinn.com/">InvoInn</a></span></p>
+
+                <p class="pull-right">Designed by <span><a target="_blank" href="http://invoinn.com/">InvoInn</a></span>
+                </p>
             </div>
         </div>
     </div>
 
-</footer><!--/Footer-->
-
+</footer>
+<!--/Footer-->
 
 
 <script src="{{ elixir('js/all.js') }}"></script>
