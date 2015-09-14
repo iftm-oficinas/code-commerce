@@ -37,5 +37,17 @@ class CheckoutController extends Controller
         return view('store.checkout', ['cart' => 'empty', 'categories' => $categories]);
     }
 
+    public function test(Che $checkoutService)
+    {
+        $checkout = $checkoutService->createCheckoutBuilder()
+            ->addItem(new Item(1, 'Televisao LED 500', 8999.99))
+            ->addItem(new Item(2, 'Video-game mega ultra blaster', 799.99))
+            ->getCheckout();
+
+        $response = $checkoutService->checkout($checkout);
+
+        redirect($response->getRedirectionUrl());
+    }
+
 
 }
