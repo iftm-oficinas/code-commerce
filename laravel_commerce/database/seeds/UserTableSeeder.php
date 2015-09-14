@@ -10,7 +10,7 @@ class UserTableSeeder extends \Illuminate\Database\Seeder
 
     public function run()
     {
-        DB::table('users')->truncate();
+        DB::table('users')->delete();//truncate();
 
         factory('CodeCommerce\User')->create([
             'name' => 'Marlon',

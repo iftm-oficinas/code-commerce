@@ -9,7 +9,7 @@ class CategoryTableSeeder extends \Illuminate\Database\Seeder
 
     public function run()
     {
-        DB::table('categories')->truncate();
+        DB::table('categories')->delete();//truncate();
 
         factory('CodeCommerce\Category', 15)->create();
     }

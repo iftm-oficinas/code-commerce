@@ -9,7 +9,7 @@ class ProductTableSeeder extends \Illuminate\Database\Seeder
 
     public function run()
     {
-        DB::table('products')->truncate();
+        DB::table('products')->delete();//truncate();
 
         factory('CodeCommerce\Product', 40)->create();
     }
