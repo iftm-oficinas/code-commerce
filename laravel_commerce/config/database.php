@@ -26,8 +26,8 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
-    //'default' => 'sqlite',
+    //'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => 'sqlite',
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'dbcommerce'),
+            'database'  => env('DB_DATABASE', 'laravelcommerce'),
             'username'  => env('DB_USERNAME', 'root'),
             'password'  => env('DB_PASSWORD', 'admwindows'),
             'charset'   => 'utf8',
